@@ -1,0 +1,21 @@
+import random
+from matplotlib import pyplot as plt
+
+def random_market(t):
+   market = [];
+   market.append(random.random() )
+   volatility = random.random()
+   for x in t:
+      old_price = market[-1]
+      rnd = random.random() ; # generate number, 0 <= x < 1.0
+      change_percent = 2 * volatility * rnd;
+      if (change_percent > volatility):
+          change_percent -= (2 * volatility);
+      change_amount = old_price * change_percent;
+      market.append(old_price + change_amount);
+   return market
+
+t = range(0,100)
+m = random_market(t)
+
+plt.plot(t,m)
